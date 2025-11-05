@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized, Comprehensive Launch Plan — Done for You by AI in Under an Hour | AI Launch Plan</title>
+    <meta name="description" content="Get a 40+ page, practical launch plan report from a 2-minute intake. Specialist AI agents research your market, customers, and competitors and deliver an implementation ready plan — no $20K agency required.">
+    
+    <!-- Stripe JS -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        :root {
+            --primary-blue: #1b5980;
+            --primary-coral: #ff6361;
+            --text-dark: #2c3e50;
+            --text-light: #5a6c7d;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-light: #e9ecef;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* keep existing styles below unchanged */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-coral);
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .credibility {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: var(--primary-coral);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-primary:hover {
+            background: #e54644;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-microcopy {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .cta-secondary {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .cta-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .trust-strip {
+            background: var(--bg-white);
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .trust-items {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .value-props { padding: 80px 0; background: var(--bg-white); }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--primary-blue); }
+        .props-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .prop-card { padding: 2rem; border-radius: 12px; background: var(--bg-light); transition: transform 0.3s; }
+        .prop-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .prop-card h3 { color: var(--primary-coral); margin-bottom: 1rem; font-size: 1.5rem; }
+        .prop-card p { color: var(--text-light); line-height: 1.6; }
+
+        .how-it-works { padding: 80px 0; background: var(--bg-light); }
+        .steps-container { display: grid; gap: 3rem; }
+        .step { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); }
+        .step-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .step-number { background: var(--primary-coral); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .step h3 { color: var(--primary-blue); font-size: 1.5rem; }
+        .workflow-diagram { max-width: 100%; height: auto; margin: 2rem 0; border-radius: 12px; box-shadow: var(--shadow-lg); }
+
+        .report-sections { padding: 80px 0; background: var(--bg-white); }
+        .sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .section-category { background: var(--bg-light); padding: 1.5rem; border-radius: 8px; }
+        .section-category h4 { color: var(--primary-blue); margin-bottom: 0.5rem; }
+        .section-category ul { list-style: none; padding-left: 0; }
+        .section-category li { padding: 0.25rem 0; color: var(--text-light); font-size: 0.95rem; }
+        .section-category li:before { content: "• "; color: var(--primary-coral); font-weight: bold; }
+
+        .who-for { padding: 80px 0; background: var(--bg-light); }
+        .audience-list { max-width: 800px; margin: 0 auto; }
+        .audience-item { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid var(--primary-coral); box-shadow: var(--shadow); }
+
+        .founder-bio { padding: 80px 0; background: var(--bg-white); }
+        .bio-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .bio-name { font-size: 2rem; color: var(--primary-blue); margin-bottom: 1rem; }
+        .bio-text { color: var(--text-light); line-height: 1.8; margin-bottom: 2rem; }
+
+        .faq { padding: 80px 0; background: var(--bg-light); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+        .faq-question { padding: 1.5rem; font-weight: 600; color: var(--primary-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { padding: 0 1.5rem 1.5rem; color: var(--text-light); display: none; }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: var(--primary-blue); color: white; padding: 2rem 0; text-align: center; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; }
+        .footer-content p { font-size: 0.85rem; margin: 0.25rem 0; }
+        .footer-links { display: flex; gap: 2rem; list-style: none; font-size: 0.85rem; }
+        .footer-links a { color: white; text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 2rem; border-radius: 12px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
+        .modal-close { float: right; font-size: 2rem; cursor: pointer; color: var(--text-light); }
+
+        .intake-form { display: grid; gap: 1rem; margin-top: 2rem; }
+        .form-group { display: grid; gap: 0.5rem; }
+        .form-group label { font-weight: 600; color: var(--primary-blue); }
+        .form-group input, .form-group select, .form-group textarea { padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 1rem; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-submit { background: var(--primary-coral); color: white; padding: 1rem 2rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
+        .form-submit:hover { background: #e54644; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .trust-items { flex-direction: column; gap: 1rem; }
+            .cta-group { flex-direction: column; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+
+        .spinner { border: 3px solid var(--border-light); border-top: 3px solid var(--primary-coral); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .loading-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.9); z-index: 3000; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; }
+        .loading-text { color: var(--primary-blue); font-size: 1.2rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="AI%20Launch%20Plan%20logo.png" alt="AI Launch Plan Logo" width="48" height="48" loading="eager" />
+                </div>
+                AI Launch Plan
+            </div>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#what-you-get">What You Get</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your comprehensive, personalized launch plan — done for you by AI in under an hour</h1>
+                <p class="subhead">Start with a 2-minute intake. Specialist AI agents do the research and deliver a 40+ page, practical launch plan report you can execute in the real world — no $20K agency required.</p>
+                <p class="credibility">Built by Brett Bouchard.</p>
+                <div class="cta-group">
+                    <button class="cta-primary" id="hero-cta">Generate my launch plan</button>
+                    <span class="cta-microcopy">Takes 2 minutes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-strip">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item"><span>✓</span><span>Helped 30+ early stage startups launch new products</span></div>
+                <div class="trust-item"><span>✓</span><span>20+ years of GTM experience</span></div>
+                <div class="trust-item"><span>✓</span><span>Includes market, customer, strategy and execution plan</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-props">
+        <div class="container">
+            <h2 class="section-title">Why AI Launch Plan?</h2>
+            <div class="props-grid">
+                <div class="prop-card"><h3>Comprehensive and personalized</h3><p>An end-to-end plan tailored to your market, product and customer -- from research through execution roadmap -- so you can launch with confidence.</p></div>
+                <div class="prop-card"><h3>Expert-trained AI agents</h3><p>Each agent is trained with 20 years of my GTM frameworks and real launches, producing practical recommendations, not generic checklists or theory.</p></div>
+                <div class="prop-card"><h3>Faster and more affordable than an agency</h3><p>From a 2-minute intake to a 40+ page plan in under an hour; replaces weeks of internal team work and avoids $20K+ external agency fees.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How it Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-header"><div class="step-number">1</div><h3>Intake (2 minutes)</h3></div>
+                    <p>Share basic context about your company, product, and goals. That's your only task.</p>
+                </div>
+                <div class="step">
+                    <div class="step-header"><div class="step-number">2</div><h3>Specialist AI agents (sequential workflow)</h3></div>
+                    <img src="AI_Launch_Plan_-_visual_for_landing_page.png" alt="AI Launch Plan Workflow" class="workflow-diagram">
+                    <ul>
+                        <li><strong>Sniff:</strong> Enriches your inputs with live web research on company and product context.</li>
+                        <li><strong>Scout:</strong> Runs deep market analysis—competitors, market sizing (TAM/SAM/SOM) and dynamics.</li>
+                        <li><strong>Lens:</strong> Builds customer insights—segments, ICP, JTBD, personas, pains and purchase drivers.</li>
+                        <li><strong>Essence:</strong> Crafts your value proposition, positioning, differentiation and messaging.</li>
+                        <li><strong>Ignition:</strong> Defines growth motions, beta strategy, pricing/monetization and metrics.</li>
+                        <li><strong>Springer:</strong> Assembles the go-to-market plan: channels, campaigns, enablement and timeline.</li>
+                        <li><strong>Audito:</strong> Quality-checks for structure, gaps and hallucinations; ensures consistency.</li>
+                        <li><strong>Sum:</strong> Compiles the executive summary and formats the final report.</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 2rem;"><a href="#sample-report" class="cta-secondary">See a sample report</a></div>
+                </div>
+                <div class="step">
+                    <div class="step-header"><div class="step-number">3</div><h3>Delivery (&lt;60 minutes)</h3></div>
+                    <p>A professional 40+ page launch plan report arrives in your inbox — ready to use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="report-sections" id="what-you-get">
+        <div class="container">
+            <h2 class="section-title">This is what you get</h2>
+            <div class="sections-grid">
+                <div class="section-category"><h4>Executive Summary</h4><ul><li>Key findings and recommendations</li><li>Quick-start action items</li></ul></div>
+                <div class="section-category"><h4>Company Overview</h4><ul><li>Business context</li><li>Product analysis</li></ul></div>
+                <div class="section-category"><h4>Market Analysis</h4><ul><li>Market Size & Growth</li><li>Growth Trends</li><li>Competitive Dynamics</li><li>Market Category</li><li>Market Opportunities</li></ul></div>
+                <div class="section-category"><h4>Target Customer Analysis</h4><ul><li>Customer Segmentation</li><li>Ideal Customer Profile (ICP)</li><li>Target Personas</li><li>Jobs To Be Done (JTBD)</li><li>Customer Pain Points</li><li>Purchase Drivers</li><li>Buying Behavior</li><li>Customer Journey</li><li>Customer Feedback</li><li>Unmet Customer Needs</li></ul></div>
+                <div class="section-category"><h4>Value Proposition & Positioning</h4><ul><li>Unique Value Proposition</li><li>Competitive Advantages</li><li>Positioning Strategy</li><li>Value Drivers</li><li>Differentiation Matrix</li><li>Messaging Framework</li></ul></div>
+                <div class="section-category"><h4>Go-to-Market Strategy</h4><ul><li>Acquisition Channel Strategy</li><li>Conversion Strategy</li><li>Retention Strategies</li><li>Growth Levers</li><li>Scaling Plan</li><li>Metrics Framework</li><li>Monetization & Pricing Strategy</li></ul></div>
+                <div class="section-category"><h4>GTM Execution Plan</h4><ul><li>Launch Timeline</li><li>Tactical Campaigns</li><li>Sales Enablement</li><li>Content Strategy</li><li>Partnership Opportunities</li><li>Execution Roadmap</li></ul></div>
+                <div class="section-category"><h4>Sources & Assumptions</h4><ul><li>Research methodology</li><li>Data sources</li><li>Key assumptions</li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="who-for">
+        <div class="container">
+            <h2 class="section-title">Who it's for</h2>
+            <div class="audience-list">
+                <div class="audience-item">Solo founders and small teams launching a new product or feature</div>
+                <div class="audience-item">SMBs without a dedicated marketing team who need a real plan — fast</div>
+                <div class="audience-item">Early-stage startups preparing investor updates or market entry</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="founder-bio">
+        <div class="container"><div class="bio-content"><h3 class="bio-name">Brett Bouchard</h3><p class="bio-text">AI is reshaping every business — but small teams don't need enterprise complexity. They need practical AI that works. After 20+ years launching and scaling — from early-stage startups to Google's 2.5B+ user platform — I've learned that technology only matters when it's implemented simply and well.</p><p class="bio-text">I've helped more than 30 early-stage startups launch new products and built practical AI solutions for small businesses, including marketing automation workflows. Small teams can move faster than big companies: you can test in days, implement quickly, and turn AI into real leverage.</p><p class="bio-text">I can help you take your report into action — implementing the recommendations and partnering with you on positioning, messaging, and launch strategy. My Swarm Workshops tackle one critical GTM component so your team keeps moving toward launch. Connect by replying to your report email or message me on LinkedIn: <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank">https://www.linkedin.com/in/brettbouchard/</a>.</p></div></div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container"><h2 class="section-title">FAQs</h2><div class="faq-container"><div class="faq-item"><div class="faq-question">How personalized is the plan?<span>+</span></div><div class="faq-answer">Every section is generated from your intake plus live research on your market, customers, and competitors — no generic templates.</div></div><div class="faq-item"><div class="faq-question">What sources does the research use?<span>+</span></div><div class="faq-answer">The workflow runs Perplexity Pro deep research and is trained to cite credible, industry sources and make conservative assumptions. All sources and assumptions are listed in the appendix of your report.</div></div><div class="faq-item"><div class="faq-question">How quickly will I receive it?<span>+</span></div><div class="faq-answer">Under 60 minutes after completing the 2-minute intake.</div></div><div class="faq-item"><div class="faq-question">Is my data private?<span>+</span></div><div class="faq-answer">Your inputs are used only to generate your plan and are not shared or used to train third-party models.</div></div></div></div>
+    </section>
+
+    <section class="value-props" id="pricing">
+        <div class="container"><h2 class="section-title">Ready to launch?</h2><div style="text-align: center; max-width: 600px; margin: 0 auto;"><p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">Get your personalized 40+ page launch plan for just <strong style="color: var(--primary-coral); font-size: 2rem;">$150</strong></p><button class="cta-primary" id="pricing-cta" style="font-size: 1.3rem; padding: 1.2rem 2.5rem;">Generate my launch plan</button><p class="cta-microcopy">Takes 2 minutes • Delivered in under 60 minutes</p></div></div>
+    </section>
+
+    <footer>
+        <div class="container"><div class="footer-content"><div><p>&copy; 2025 BBvisory LLC. All rights reserved.</p><p>Built by Brett Bouchard • 20+ years in GTM and marketing • Helped 30+ startups launch their products</p></div><ul class="footer-links"><li><a href="#" id="terms-link">Terms of Service</a></li><li><a href="https://www.linkedin.com/in/brettbouchard/" target="_blank">LinkedIn</a></li></ul></div></div>
+    </footer>
+
+    <div class="modal" id="intake-modal">
+        <div class="modal-content"><span class="modal-close">&times;</span><h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Let's build your launch plan</h2><p style="color: var(--text-light); margin-bottom: 2rem;">Tell us about your company and product. This takes about 2 minutes.</p><form class="intake-form" id="intake-form"><div class="form-group"><label for="name">Your name *</label><input type="text" id="name" name="name" required></div><div class="form-group"><label for="email">Your email *</label><input type="email" id="email" name="email" required></div><div class="form-group"><label for="company_name">Your company name *</label><input type="text" id="company_name" name="company_name" required></div><div class="form-group"><label for="company_type">Type of company *</label><select id="company_type" name="company_type" required><option value="">Select...</option><option value="B2B">B2B</option><option value="B2C">B2C</option><option value="B2Developer">B2Developer</option></select></div><div class="form-group"><label for="company_url">Company website URL</label><input type="url" id="company_url" name="company_url" placeholder="https://example.com"></div><div class="form-group"><label for="product_name">Product or feature name launching *</label><input type="text" id="product_name" name="product_name" required></div><div class="form-group"><label for="product_description">Short product/feature description *</label><textarea id="product_description" name="product_description" required></textarea></div><div class="form-group"><label for="launch_goal">Launch goal (single sentence) *</label><input type="text" id="launch_goal" name="launch_goal" required></div><div class="form-group"><label for="budget">Budget available for GTM launch (USD)</label><input type="text" id="budget" name="budget" placeholder="e.g., $5,000"></div><div class="form-group"><label for="target_audience">Target audience (1-2 sentences) *</label><textarea id="target_audience" name="target_audience" required></textarea></div><div class="form-group"><label for="competitors">Top 2-3 competitors (optional)</label><textarea id="competitors" name="competitors" placeholder="List your main competitors"></textarea></div><div class="form-group"><label for="kpis">Any specific launch KPIs you want to track? (optional)</label><textarea id="kpis" name="kpis" placeholder="e.g., 100 signups in first month"></textarea></div><div class="form-group"><label for="additional_info">Anything else we should know? (optional)</label><textarea id="additional_info" name="additional_info"></textarea></div><button type="submit" class="form-submit">Continue to payment →</button></form></div>
+    </div>
+
+    <div class="modal" id="sample-modal">
+        <div class="modal-content"><span class="modal-close">&times;</span><h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Sample Report Preview</h2><p style="color: var(--text-light); margin-bottom: 2rem;">Preview excerpts from an actual AI Launch Plan report:</p><div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;"><div style="text-align: center; margin-bottom: 2rem;"><h3 style="color: var(--primary-coral); margin-bottom: 1rem;">Executive Summary Page</h3><div style="background: white; padding: 1rem; border: 1px solid var(--border-light); border-radius: 8px; max-width: 600px; margin: 0 auto; text-align: left;"><p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.8;"><strong>Executive Summary</strong><br>Arrows is preparing to launch Playbooks, an innovative feature that lets SaaS customer teams build, share, and automate onboarding templates directly within their HubSpot or Salesforce CRMs. As a purpose-built solution for resource-constrained SaaS teams, Playbooks addresses a sizable and fast-growing market opportunity: the global digital sales room and onboarding category, valued at $1.5B in 2024...<br><br><em style="color: var(--text-light);">[Preview truncated - full report contains 40+ pages of detailed analysis]</em></p></div></div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;"><div style="text-align: center;"><h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Market Analysis</h4><div style="background: white; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 150px; display: flex; align-items: center; justify-content: center;"><div style="text-align: left; font-size: 0.7rem; color: var(--text-light);"><p>• Market Size: $1.5B (2024)</p><p>• Growth Rate: 14-15% CAGR</p><p>• TAM/SAM/SOM Calculations</p><p>• Competitive Dynamics</p><p>• Market Opportunities</p></div></div></div><div style="text-align: center;"><h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Customer Personas</h4><div style="background: white; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 150px; display: flex; align-items: center; justify-content: center;"><div style="text-align: left; font-size: 0.7rem; color: var(--text-light);"><p>• CS Lead Persona</p><p>• Implementation Manager</p><p>• Head of Operations</p><p>• Pain Points & JTBD</p><p>• Buying Journey Map</p></div></div></div><div style="text-align: center;"><h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">GTM Strategy</h4><div style="background: white; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 150px; display: flex; align-items: center; justify-content: center;"><div style="text-align: left; font-size: 0.7rem; color: var(--text-light);"><p>• Channel Strategy</p><p>• Pricing & Monetization</p><p>• Launch Timeline</p><p>• Success Metrics</p><p>• Growth Levers</p></div></div></div></div><p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Every report includes visual charts, competitive analysis matrices, persona tables, and actionable frameworks customized to your specific business and market.</p><p style="text-align: center; margin-top: 2rem;"><button class="cta-primary" onclick="document.getElementById('sample-modal').style.display='none'; document.getElementById('intake-modal').style.display='flex';">Get your personalized plan →</button></p></div></div>
+
+    <div class="modal" id="terms-modal">
+        <div class="modal-content"><span class="modal-close">&times;</span><h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Terms of Service</h2><div style="color: var(--text-light); line-height: 1.6;"><p><strong>Last Updated: December 2024</strong></p><h3>1. Service Description</h3><p>AI Launch Plan ("Service") provides automated go-to-market planning reports generated by AI based on user inputs. BBvisory LLC ("Company", "we", "us") operates this service.</p><h3>2. Use of Service</h3><p>By using our Service, you agree to provide accurate information and use the generated reports for legitimate business purposes only. You retain all rights to your input data.</p><h3>3. Payment Terms</h3><p>Payment is required before report generation. All sales are final. Reports are delivered electronically within 60 minutes of payment confirmation.</p><h3>4. Intellectual Property</h3><p>You own the customized report generated for you. We retain rights to our methodologies, frameworks, and AI training.</p><h3>5. Privacy</h3><p>We process your data solely to generate your report. We do not sell or share your data with third parties. Your inputs are not used to train AI models.</p><h3>6. Disclaimers</h3><p>Reports are based on AI analysis and publicly available information. Results are not guaranteed. The Service is not a substitute for professional consulting advice.</p><h3>7. Limitation of Liability</h3><p>Our liability is limited to the amount paid for the Service. We are not liable for indirect, incidental, or consequential damages.</p><h3>8. Contact</h3><p>For questions about these terms, contact us through the email provided with your report.</p></div></div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay"><div class="spinner"></div><p class="loading-text">Processing your payment...</p></div>
+
+    <script>
+        const STRIPE_PUBLIC_KEY = 'YOUR_STRIPE_PUBLISHABLE_KEY';
+        const stripe = Stripe(STRIPE_PUBLIC_KEY);
+        let formData = {};
+        function setupModals(){const modals=document.querySelectorAll('.modal');const closeBtns=document.querySelectorAll('.modal-close');closeBtns.forEach(btn=>{btn.onclick=function(){btn.closest('.modal').style.display='none';}});window.onclick=function(event){if(event.target.classList.contains('modal')){event.target.style.display='none';}}}
+        document.getElementById('hero-cta').onclick=function(){document.getElementById('intake-modal').style.display='flex';};
+        document.getElementById('pricing-cta').onclick=function(){document.getElementById('intake-modal').style.display='flex';};
+        document.querySelectorAll('a[href="#sample-report"]').forEach(link=>{link.onclick=function(e){e.preventDefault();document.getElementById('sample-modal').style.display='flex';}});
+        document.getElementById('terms-link').onclick=function(e){e.preventDefault();document.getElementById('terms-modal').style.display='flex';};
+        document.querySelectorAll('.faq-question').forEach(question=>{question.onclick=function(){const item=this.parentElement;item.classList.toggle('active');const symbol=this.querySelector('span');symbol.textContent=item.classList.contains('active')?'−':'+';}});
+        document.getElementById('intake-form').onsubmit=async function(e){e.preventDefault();const formElements=this.elements;formData={};for(let element of formElements){if(element.name){formData[element.name]=element.value;}}formData.submittedAt=new Date().toISOString();formData.formMode='production';document.getElementById('intake-modal').style.display='none';try{const response=await fetch('YOUR_STRIPE_CHECKOUT_ENDPOINT',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({amount:15000,currency:'usd',description:'AI Launch Plan Report',metadata:{email:formData.email,company:formData.company_name}})});const session=await response.json();const result=await stripe.redirectToCheckout({sessionId:session.id});if(result.error){alert('Payment failed: '+result.error.message);} }catch(error){submitToN8n();}}
+        async function submitToN8n(){document.getElementById('loading-overlay').style.display='flex';try{const response=await fetch('YOUR_N8N_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify(formData)});if(response.ok){document.getElementById('loading-overlay').innerHTML=`<div style="text-align: center; padding: 2rem;"><h2 style="color: var(--primary-coral); margin-bottom: 1rem;">Success! 🎉</h2><p style="color: var(--text-light);">Your AI Launch Plan is being generated.</p><p style="color: var(--text-light);">You'll receive it in your inbox within 60 minutes.</p></div>`;}else{throw new Error('Submission failed');}}catch(error){document.getElementById('loading-overlay').style.display='none';alert('There was an error processing your request. Please try again.');}}
+        setupModals();
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){const href=this.getAttribute('href');if(href!=='#'&&!href.includes('sample-report')){e.preventDefault();const target=document.querySelector(this.getAttribute('href'));if(target){target.scrollIntoView({behavior:'smooth',block:'start'});}}});});
+    </script>
+</body>
+</html>
