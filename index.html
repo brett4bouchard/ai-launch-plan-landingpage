@@ -8,7 +8,10 @@
     
     <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
-    
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
     <style>
         :root {
             --primary-blue: #1b5980;
@@ -275,6 +278,15 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .loading-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.9); z-index: 3000; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; }
         .loading-text { color: var(--primary-blue); font-size: 1.2rem; font-weight: 600; }
+
+        .pdf-viewer-container { margin: 2rem 0; }
+        .pdf-canvas { max-width: 100%; height: auto; box-shadow: var(--shadow-lg); border-radius: 8px; margin: 1rem auto; display: block; }
+        .pdf-controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin: 1rem 0; }
+        .pdf-nav-btn { background: var(--primary-blue); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .pdf-nav-btn:hover { background: var(--primary-coral); }
+        .pdf-nav-btn:disabled { background: var(--border-light); cursor: not-allowed; }
+        .pdf-page-info { color: var(--text-light); font-weight: 600; }
+        .sample-modal-large { max-width: 900px !important; }
     </style>
 </head>
 <body>
@@ -282,7 +294,7 @@
         <nav class="container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="AI%20Launch%20Plan%20logo.png" alt="AI Launch Plan Logo" width="48" height="48" loading="eager" />
+                    <img src="ailaunchplan-logo.png" alt="AI Launch Plan Logo" width="48" height="48" loading="eager" />
                 </div>
                 AI Launch Plan
             </div>
@@ -299,11 +311,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Your comprehensive, personalized launch plan — done for you by AI in under an hour</h1>
-                <p class="subhead">Start with a 2-minute intake. Specialist AI agents do the research and deliver a 40+ page, practical launch plan report you can execute in the real world — no $20K agency required.</p>
-                <p class="credibility">Built by Brett Bouchard.</p>
+                <p class="subhead">A 2‑minute intake triggers specialist AI agents trained on 20 years of my GTM experience to deliver a practical 40+ page launch plan report — the blueprint you can execute in the real world</p>
                 <div class="cta-group">
                     <button class="cta-primary" id="hero-cta">Generate my launch plan</button>
-                    <span class="cta-microcopy">Takes 2 minutes</span>
+                    <a href="#sample-report" class="cta-secondary">See a sample report</a>
                 </div>
             </div>
         </div>
@@ -312,20 +323,18 @@
     <section class="trust-strip">
         <div class="container">
             <div class="trust-items">
-                <div class="trust-item"><span>✓</span><span>Helped 30+ early stage startups launch new products</span></div>
-                <div class="trust-item"><span>✓</span><span>20+ years of GTM experience</span></div>
-                <div class="trust-item"><span>✓</span><span>Includes market, customer, strategy and execution plan</span></div>
+                <div class="trust-item">Built by Brett Bouchard. Helped 30+ early stage startups launch new products • 20+ years of GTM experience • Includes market, customer, strategy and execution plan</div>
             </div>
         </div>
     </section>
 
     <section class="value-props">
         <div class="container">
-            <h2 class="section-title">Why AI Launch Plan?</h2>
+            <h2 class="section-title">Why founders choose this over agencies or DIY</h2>
             <div class="props-grid">
-                <div class="prop-card"><h3>Comprehensive and personalized</h3><p>An end-to-end plan tailored to your market, product and customer -- from research through execution roadmap -- so you can launch with confidence.</p></div>
-                <div class="prop-card"><h3>Expert-trained AI agents</h3><p>Each agent is trained with 20 years of my GTM frameworks and real launches, producing practical recommendations, not generic checklists or theory.</p></div>
-                <div class="prop-card"><h3>Faster and more affordable than an agency</h3><p>From a 2-minute intake to a 40+ page plan in under an hour; replaces weeks of internal team work and avoids $20K+ external agency fees.</p></div>
+                <div class="prop-card"><h3>A fraction of the effort and time</h3><p>No meetings or back‑and‑forth. Get a complete launch blueprint in under 60 minutes so you can get back to building.</p></div>
+                <div class="prop-card"><h3>Practical, not generic</h3><p>Agents apply my proven GTM frameworks and are audited for hallucinations. You get an action‑ready plan, not theory.</p></div>
+                <div class="prop-card"><h3>End‑to‑end clarity</h3><p>Market research, customer insights, positioning, strategy, and a step‑by‑step execution roadmap — everything in one blueprint.</p></div>
             </div>
         </div>
     </section>
@@ -401,7 +410,7 @@
     </section>
 
     <footer>
-        <div class="container"><div class="footer-content"><div><p>&copy; 2025 BBvisory LLC. All rights reserved.</p><p>Built by Brett Bouchard • 20+ years in GTM and marketing • Helped 30+ startups launch their products</p></div><ul class="footer-links"><li><a href="#" id="terms-link">Terms of Service</a></li><li><a href="https://www.linkedin.com/in/brettbouchard/" target="_blank">LinkedIn</a></li></ul></div></div>
+        <div class="container"><div class="footer-content"><div><p>&copy; 2025 BBvisory LLC. All rights reserved.</p></div><ul class="footer-links"><li><a href="#" id="terms-link">Terms of Service</a></li></ul></div></div>
     </footer>
 
     <div class="modal" id="intake-modal">
@@ -409,10 +418,31 @@
     </div>
 
     <div class="modal" id="sample-modal">
-        <div class="modal-content"><span class="modal-close">&times;</span><h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Sample Report Preview</h2><p style="color: var(--text-light); margin-bottom: 2rem;">Preview excerpts from an actual AI Launch Plan report:</p><div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;"><div style="text-align: center; margin-bottom: 2rem;"><h3 style="color: var(--primary-coral); margin-bottom: 1rem;">Executive Summary Page</h3><div style="background: white; padding: 1rem; border: 1px solid var(--border-light); border-radius: 8px; max-width: 600px; margin: 0 auto; text-align: left;"><p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.8;"><strong>Executive Summary</strong><br>Arrows is preparing to launch Playbooks, an innovative feature that lets SaaS customer teams build, share, and automate onboarding templates directly within their HubSpot or Salesforce CRMs. As a purpose-built solution for resource-constrained SaaS teams, Playbooks addresses a sizable and fast-growing market opportunity: the global digital sales room and onboarding category, valued at $1.5B in 2024...<br><br><em style="color: var(--text-light);">[Preview truncated - full report contains 40+ pages of detailed analysis]</em></p></div></div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;"><div style="text-align: center;"><h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Market Analysis</h4><div style="background: white; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 150px; display: flex; align-items: center; justify-content: center;"><div style="text-align: left; font-size: 0.7rem; color: var(--text-light);"><p>• Market Size: $1.5B (2024)</p><p>• Growth Rate: 14-15% CAGR</p><p>• TAM/SAM/SOM Calculations</p><p>• Competitive Dynamics</p><p>• Market Opportunities</p></div></div></div><div style="text-align: center;"><h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Customer Personas</h4><div style="background: white; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 150px; display: flex; align-items: center; justify-content: center;"><div style="text-align: left; font-size: 0.7rem; color: var(--text-light);"><p>• CS Lead Persona</p><p>• Implementation Manager</p><p>• Head of Operations</p><p>• Pain Points & JTBD</p><p>• Buying Journey Map</p></div></div></div><div style="text-align: center;"><h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">GTM Strategy</h4><div style="background: white; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 150px; display: flex; align-items: center; justify-content: center;"><div style="text-align: left; font-size: 0.7rem; color: var(--text-light);"><p>• Channel Strategy</p><p>• Pricing & Monetization</p><p>• Launch Timeline</p><p>• Success Metrics</p><p>• Growth Levers</p></div></div></div></div><p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Every report includes visual charts, competitive analysis matrices, persona tables, and actionable frameworks customized to your specific business and market.</p><p style="text-align: center; margin-top: 2rem;"><button class="cta-primary" onclick="document.getElementById('sample-modal').style.display='none'; document.getElementById('intake-modal').style.display='flex';">Get your personalized plan →</button></p></div></div>
+        <div class="modal-content sample-modal-large">
+            <span class="modal-close">&times;</span>
+            <h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Sample Report Preview</h2>
+            <p style="color: var(--text-light); margin-bottom: 1rem;">Preview selected pages from an actual AI Launch Plan report:</p>
+
+            <div class="pdf-viewer-container">
+                <div class="pdf-controls">
+                    <button class="pdf-nav-btn" id="pdf-prev">← Previous</button>
+                    <span class="pdf-page-info" id="pdf-page-info">Page 1</span>
+                    <button class="pdf-nav-btn" id="pdf-next">Next →</button>
+                </div>
+                <canvas id="pdf-canvas" class="pdf-canvas"></canvas>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">Showing key pages: Market Analysis, ICP, Positioning Strategy, Growth Levers</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem;">
+                <button class="cta-primary" onclick="document.getElementById('sample-modal').style.display='none'; document.getElementById('intake-modal').style.display='flex';">Get your personalized plan →</button>
+            </p>
+        </div>
+    </div>
 
     <div class="modal" id="terms-modal">
-        <div class="modal-content"><span class="modal-close">&times;</span><h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Terms of Service</h2><div style="color: var(--text-light); line-height: 1.6;"><p><strong>Last Updated: December 2024</strong></p><h3>1. Service Description</h3><p>AI Launch Plan ("Service") provides automated go-to-market planning reports generated by AI based on user inputs. BBvisory LLC ("Company", "we", "us") operates this service.</p><h3>2. Use of Service</h3><p>By using our Service, you agree to provide accurate information and use the generated reports for legitimate business purposes only. You retain all rights to your input data.</p><h3>3. Payment Terms</h3><p>Payment is required before report generation. All sales are final. Reports are delivered electronically within 60 minutes of payment confirmation.</p><h3>4. Intellectual Property</h3><p>You own the customized report generated for you. We retain rights to our methodologies, frameworks, and AI training.</p><h3>5. Privacy</h3><p>We process your data solely to generate your report. We do not sell or share your data with third parties. Your inputs are not used to train AI models.</p><h3>6. Disclaimers</h3><p>Reports are based on AI analysis and publicly available information. Results are not guaranteed. The Service is not a substitute for professional consulting advice.</p><h3>7. Limitation of Liability</h3><p>Our liability is limited to the amount paid for the Service. We are not liable for indirect, incidental, or consequential damages.</p><h3>8. Contact</h3><p>For questions about these terms, contact us through the email provided with your report.</p></div></div>
+        <div class="modal-content"><span class="modal-close">&times;</span><h2 style="color: var(--primary-blue); margin-bottom: 1rem;">Terms of Service</h2><div style="color: var(--text-light); line-height: 1.8; max-height: 70vh; overflow-y: auto;"><p><strong>Effective Date: October 2025</strong></p><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">1. Acceptance of Terms</h3><p>By accessing or using AI Launch Plan ("Service") operated by BBvisory LLC ("Company", "we", "us", "our"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you do not have permission to access the Service.</p><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">2. Description of Service</h3><p>AI Launch Plan provides automated generation of go-to-market strategy reports using artificial intelligence based on user-provided information. The Service includes:</p><ul style="margin-left: 1.5rem;"><li>Online intake form for data collection</li><li>AI-powered analysis and report generation</li><li>Delivery of customized launch plan reports</li></ul><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">3. User Responsibilities</h3><p>You agree to:</p><ul style="margin-left: 1.5rem;"><li>Provide accurate, current, and complete information</li><li>Maintain the confidentiality of your report access</li><li>Use the Service only for lawful purposes</li><li>Not attempt to reverse-engineer our AI systems or methodologies</li><li>Not resell or redistribute reports generated for you</li></ul><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">4. Payment and Refunds</h3><ul style="margin-left: 1.5rem;"><li>Payment is required before report generation</li><li>Current price: $150 USD per report</li><li>All sales are final - no refunds</li><li>We reserve the right to change pricing with notice</li><li>Payment processing is handled by Stripe</li></ul><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">5. Intellectual Property</h3><p><strong>Your Content:</strong> You retain all rights to the information you provide to us. By submitting information, you grant us a limited license to use it solely for generating your report.</p><p><strong>Our Content:</strong> We retain all rights to our AI models and training data, GTM frameworks and methodologies, report templates and structures, and the AI Launch Plan brand and website.</p><p><strong>Your Report:</strong> The customized report generated for you is your property. You may use it for any lawful business purpose.</p><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">6. Privacy and Data Protection</h3><ul style="margin-left: 1.5rem;"><li>We process your data solely to provide the Service</li><li>Your inputs are not used to train AI models</li><li>We do not sell or share your information with third parties</li><li>We implement reasonable security measures to protect your data</li><li>We retain your data only as long as necessary to provide the Service</li></ul><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">7. Disclaimers</h3><p>THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. We specifically disclaim warranties of merchantability or fitness for a particular purpose, that the Service will be uninterrupted or error-free, that reports will achieve specific business results, and the accuracy or completeness of AI-generated content.</p><p>The Service is not a substitute for professional business consulting, legal, or financial advice.</p><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">8. Limitation of Liability</h3><p>To the maximum extent permitted by law, our total liability is limited to the amount you paid for the Service. We are not liable for indirect, incidental, consequential, or punitive damages, or lost profits or business opportunities.</p><h3 style="color: var(--primary-blue); margin-top: 1.5rem;">9. Contact Information</h3><p>For questions about these Terms, please contact:</p><p>BBvisory LLC<br>Email: brett@bbvisory.com</p><hr style="margin: 2rem 0;"><p style="font-size: 0.9rem; font-style: italic;">By using AI Launch Plan, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p></div></div>
     </div>
 
     <div class="loading-overlay" id="loading-overlay"><div class="spinner"></div><p class="loading-text">Processing your payment...</p></div>
@@ -431,6 +461,76 @@
         async function submitToN8n(){document.getElementById('loading-overlay').style.display='flex';try{const response=await fetch('YOUR_N8N_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify(formData)});if(response.ok){document.getElementById('loading-overlay').innerHTML=`<div style="text-align: center; padding: 2rem;"><h2 style="color: var(--primary-coral); margin-bottom: 1rem;">Success! 🎉</h2><p style="color: var(--text-light);">Your AI Launch Plan is being generated.</p><p style="color: var(--text-light);">You'll receive it in your inbox within 60 minutes.</p></div>`;}else{throw new Error('Submission failed');}}catch(error){document.getElementById('loading-overlay').style.display='none';alert('There was an error processing your request. Please try again.');}}
         setupModals();
         document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){const href=this.getAttribute('href');if(href!=='#'&&!href.includes('sample-report')){e.preventDefault();const target=document.querySelector(this.getAttribute('href'));if(target){target.scrollIntoView({behavior:'smooth',block:'start'});}}});});
+
+        // PDF.js Configuration and Preview
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Pages to show: Market Analysis (p4), ICP (p10), Positioning Strategy (p18), Growth Levers (p24)
+        const pagesToShow = [4, 10, 18, 24];
+
+        let pdfDoc = null;
+        let currentPageIndex = 0;
+        const canvas = document.getElementById('pdf-canvas');
+        const ctx = canvas.getContext('2d');
+
+        async function loadPDF() {
+            try {
+                const loadingTask = pdfjsLib.getDocument('Arrows-Go-to-Market-Plan-PDFpreview.pdf');
+                pdfDoc = await loadingTask.promise;
+                renderCurrentPage();
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+            }
+        }
+
+        async function renderCurrentPage() {
+            if (!pdfDoc) return;
+
+            const pageNum = pagesToShow[currentPageIndex];
+            const page = await pdfDoc.getPage(pageNum);
+
+            const viewport = page.getViewport({ scale: 1.5 });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            const renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+
+            await page.render(renderContext).promise;
+
+            // Update UI
+            document.getElementById('pdf-page-info').textContent = `Page ${currentPageIndex + 1} of ${pagesToShow.length}`;
+            document.getElementById('pdf-prev').disabled = currentPageIndex === 0;
+            document.getElementById('pdf-next').disabled = currentPageIndex === pagesToShow.length - 1;
+        }
+
+        // Navigation buttons
+        document.getElementById('pdf-prev').addEventListener('click', () => {
+            if (currentPageIndex > 0) {
+                currentPageIndex--;
+                renderCurrentPage();
+            }
+        });
+
+        document.getElementById('pdf-next').addEventListener('click', () => {
+            if (currentPageIndex < pagesToShow.length - 1) {
+                currentPageIndex++;
+                renderCurrentPage();
+            }
+        });
+
+        // Load PDF when sample modal opens
+        document.querySelectorAll('a[href="#sample-report"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('sample-modal').style.display = 'flex';
+                if (!pdfDoc) {
+                    loadPDF();
+                }
+            });
+        });
     </script>
 </body>
 </html>
