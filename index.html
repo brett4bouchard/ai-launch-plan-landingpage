@@ -54,7 +54,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(250,248,245,0.98);
+            background: rgba(255,255,255,0.98);
             backdrop-filter: blur(20px);
             z-index: 1000;
             box-shadow: 0 1px 0 rgba(0,0,0,0.05);
@@ -135,8 +135,15 @@
             z-index: 1;
         }
 
+        .hero-content .subhead {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2rem;
+        }
+
         h1 {
-            font-size: 1.75rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-blue);
             margin-bottom: 1.5rem;
@@ -158,10 +165,29 @@
 
         .cta-group {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
+        }
+
+        .cta-secondary-small {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.7rem 1.5rem;
+            border: 1.5px solid var(--primary-blue);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .cta-secondary-small:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .cta-primary {
@@ -230,8 +256,8 @@
             white-space: nowrap;
         }
 
-        .value-props { padding: 80px 0; background: var(--accent-cream); }
-        .section-title { font-size: 1.5rem; text-align: center; margin-bottom: 3rem; color: var(--primary-blue); font-weight: 700; }
+        .value-props { padding: 50px 0; background: var(--accent-cream); }
+        .section-title { font-size: 1.5rem; text-align: center; margin-bottom: 2rem; color: var(--primary-blue); font-weight: 700; }
         .props-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
         .prop-card {
             padding: 2.5rem;
@@ -251,11 +277,10 @@
             box-shadow: var(--shadow-xl);
             border-color: transparent;
         }
-        .prop-card h3 { color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700; }
-        .prop-card:nth-child(2) h3 { color: var(--primary-coral); }
+        .prop-card h3 { color: var(--primary-coral); margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700; }
         .prop-card p { color: var(--text-light); line-height: 1.7; }
 
-        .how-it-works { padding: 80px 0; background: var(--bg-light); }
+        .how-it-works { padding: 50px 0; background: var(--bg-light); }
         .steps-container { display: grid; gap: 3rem; }
         .step {
             background: #ffffff;
@@ -273,15 +298,15 @@
         .step h3 { color: var(--primary-blue); font-size: 1.5rem; }
         .workflow-diagram { max-width: 100%; height: auto; margin: 2rem 0; border-radius: 12px; box-shadow: var(--shadow-lg); }
 
-        .report-sections { padding: 80px 0; background: var(--accent-cream); }
+        .report-sections { padding: 50px 0; background: var(--accent-cream); }
         .sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; }
-        .section-category { background: var(--bg-light); padding: 1.5rem; border-radius: 8px; }
+        .section-category { background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border: 1px solid var(--border-light); }
         .section-category h4 { color: var(--primary-blue); margin-bottom: 0.5rem; }
         .section-category ul { list-style: none; padding-left: 0; }
         .section-category li { padding: 0.25rem 0; color: var(--text-light); font-size: 0.95rem; }
         .section-category li:before { content: "• "; color: var(--primary-coral); font-weight: bold; }
 
-        .who-for { padding: 80px 0; background: var(--bg-light); }
+        .who-for { padding: 50px 0; background: var(--bg-light); }
         .audience-list { max-width: 800px; margin: 0 auto; }
         .audience-item {
             background: #ffffff;
@@ -297,12 +322,12 @@
             animation: fadeInLeft 0.6s ease forwards;
         }
 
-        .founder-bio { padding: 80px 0; background: var(--accent-cream); }
+        .founder-bio { padding: 50px 0; background: var(--accent-cream); }
         .bio-content { max-width: 800px; margin: 0 auto; text-align: center; }
-        .bio-name { font-size: 2rem; color: var(--primary-blue); margin-bottom: 1rem; }
-        .bio-text { color: var(--text-light); line-height: 1.8; margin-bottom: 2rem; }
+        .bio-name { font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem; }
+        .bio-text { color: var(--text-light); line-height: 1.8; }
 
-        .faq { padding: 80px 0; background: var(--bg-light); }
+        .faq { padding: 50px 0; background: var(--bg-light); }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item {
             background: #ffffff;
@@ -364,7 +389,7 @@
 
         /* Pricing comparison table */
         .pricing-comparison {
-            padding: 80px 0;
+            padding: 50px 0;
             background: var(--bg-light);
         }
 
@@ -411,7 +436,7 @@
         }
 
         .comparison-table .highlight {
-            background: #f0fdf4;
+            background: #fff4ed;
             font-weight: 600;
         }
 
@@ -475,7 +500,7 @@
                 <p class="subhead">A 2 minute intake triggers specialist AI agents trained on 20 years of my experience to deliver a 40 page launch plan — your pragmatic Go-to-Market blueprint</p>
                 <div class="cta-group">
                     <button class="cta-primary" id="hero-cta">Generate my launch plan</button>
-                    <a href="#sample-report" class="cta-secondary">See a sample report</a>
+                    <a href="#sample-report" class="cta-secondary-small">See a sample report</a>
                 </div>
             </div>
         </div>
@@ -559,7 +584,7 @@
     </section>
 
     <section class="founder-bio">
-        <div class="container"><div class="bio-content"><h3 class="bio-name">Brett Bouchard</h3><p class="bio-text">AI is reshaping every business — but small teams don't need enterprise complexity. They need practical AI that works. After 20+ years launching and scaling — from early-stage startups to Google's 2.5B+ user platform — I've learned that technology only matters when it's implemented simply and well.</p><p class="bio-text">I've helped more than 30 early-stage startups launch new products and built practical AI solutions for small businesses, including marketing automation workflows. Small teams can move faster than big companies: you can test in days, implement quickly, and turn AI into real leverage.</p><p class="bio-text">I can help you take your report into action — implementing the recommendations and partnering with you on positioning, messaging, and launch strategy. My Swarm Workshops tackle one critical GTM component so your team keeps moving toward launch. Connect by replying to your report email or message me on LinkedIn: <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank">https://www.linkedin.com/in/brettbouchard/</a>.</p></div></div>
+        <div class="container"><div class="bio-content"><h2 class="section-title">About the product builder</h2><p class="bio-text">👋 Hi, I'm Brett Bouchard, bringing my experience over 20 years in marketing at early-stage startups to Google Play's 3B+ user platform. I've helped more than 30 early stage startups launch new products and built practical AI solutions for small businesses, including marketing automation workflows. Small teams can move faster than big companies: you can test in days, implement quickly, and turn AI into real leverage. Connect with me at <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">https://www.linkedin.com/in/brettbouchard/</a>.</p></div></div>
     </section>
 
     <section class="faq" id="faq">
@@ -582,7 +607,7 @@
                         <tr>
                             <td class="highlight">$280</td>
                             <td>$8,000 - $15,000+ in salary costs</td>
-                            <td>$5,000 - $20,000+</td>
+                            <td>$15,000 - $30,000+</td>
                         </tr>
                         <tr>
                             <td class="highlight">Under 60 minutes</td>
@@ -606,7 +631,7 @@
                         </tr>
                         <tr>
                             <td class="highlight">Get started immediately</td>
-                            <td>Recruiting, onboarding required</td>
+                            <td>Reprioritizing current work</td>
                             <td>Contracts, onboarding process</td>
                         </tr>
                     </tbody>
