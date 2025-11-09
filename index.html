@@ -296,19 +296,7 @@
         .step-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
         .step-number { background: var(--primary-coral); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
         .step h3 { color: var(--primary-blue); font-size: 1.5rem; }
-        .workflow-section {
-            padding: 40px 0;
-            background: #ffffff;
-        }
-
-        .workflow-diagram {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: var(--shadow-lg);
-            display: block;
-            margin: 0 auto;
-        }
+        .workflow-diagram { max-width: 100%; height: auto; margin: 2rem 0; border-radius: 12px; box-shadow: var(--shadow-lg); }
 
         .report-sections { padding: 40px 0; background: var(--accent-cream); }
         .sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; }
@@ -526,12 +514,6 @@
         </div>
     </section>
 
-    <section class="workflow-section">
-        <div class="container">
-            <img src="AI_Launch_Plan_-_visual_for_landing_page.png" alt="AI Launch Plan Workflow" class="workflow-diagram">
-        </div>
-    </section>
-
     <section class="value-props">
         <div class="container">
             <h2 class="section-title">Why founders choose this over agencies or DIY</h2>
@@ -552,7 +534,8 @@
                     <p>Share basic context about your company, product, and goals. That's your only task.</p>
                 </div>
                 <div class="step">
-                    <div class="step-header"><div class="step-number">2</div><h3>Specialist AI agents (sequential workflow)</h3></div>
+                    <div class="step-header"><div class="step-number">2</div><h3>Specialist AI agents</h3></div>
+                    <img src="AI_Launch_Plan_-_visual_for_landing_page.png" alt="AI Launch Plan Workflow" class="workflow-diagram">
                     <ul>
                         <li><strong>Sniff:</strong> Enriches your inputs with live web research on company and product context.</li>
                         <li><strong>Scout:</strong> Runs deep market analysis—competitors, market sizing (TAM/SAM/SOM) and dynamics.</li>
