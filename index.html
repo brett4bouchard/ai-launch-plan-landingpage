@@ -492,6 +492,74 @@
         .pdf-nav-btn:disabled { background: var(--border-light); cursor: not-allowed; }
         .pdf-page-info { color: var(--text-light); font-weight: 600; }
         .sample-modal-large { max-width: 900px !important; }
+
+        /* Value Stack Section */
+        .value-stack { padding: 40px 0; background: var(--bg-white); }
+        .value-stack-content {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #faf8f5 0%, #ffffff 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--border-light);
+        }
+        .value-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .value-item:last-child {
+            border-bottom: none;
+        }
+        .value-label {
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .value-price {
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .value-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--primary-coral) 50%, transparent 100%);
+            margin: 1.5rem 0;
+        }
+        .value-total {
+            font-size: 1.1rem;
+            padding-top: 1.5rem;
+        }
+        .value-total .value-label,
+        .value-total .value-price {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        .value-your-price {
+            background: linear-gradient(135deg, var(--primary-coral) 0%, #ff5252 100%);
+            padding: 1.5rem 1.5rem !important;
+            margin: 1rem -1rem;
+            border-radius: 12px;
+            border-bottom: none !important;
+        }
+        .value-your-price .value-label,
+        .value-your-price .value-price {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .value-savings {
+            font-size: 1.2rem;
+            padding-top: 1rem;
+        }
+        .value-savings .value-label,
+        .value-savings .value-price {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -504,10 +572,10 @@
                 AI Launch Plan
             </div>
             <ul class="nav-links">
-                <li><a href="#how-it-works">How it Works</a></li>
                 <li><a href="#what-you-get">What You Get</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
                 <li><a href="#faq">FAQ</a></li>
+                <li><a href="#pricing">Pricing</a></li>
             </ul>
         </nav>
     </header>
@@ -515,8 +583,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Your comprehensive, personalized launch plan<br>— done for you by AI in under an hour</h1>
-                <p class="subhead">Specialist AI agents trained on 20 years of my experience deliver a 40+ page launch plan. Get your own actionable Go-to-Market blueprint.</p>
+                <h1>Most founders waste $15K and 6 weeks on launch plans they never execute. Yours delivered in 60 minutes for $280.</h1>
+                <p class="subhead">Get market research, positioning, pricing strategy and your entire GTM roadmap - in one document, in under an hour so you can start executing fast.</p>
                 <div class="cta-group">
                     <button class="cta-primary" id="hero-cta">Generate my launch plan</button>
                     <a href="#sample-report" class="cta-secondary-small">See a sample report</a>
@@ -530,7 +598,7 @@
     <section class="trust-strip">
         <div class="container">
             <div class="trust-items">
-                <div class="trust-item">Built by Brett Bouchard. Helped 30+ early stage startups launch new products • 20+ years of GTM experience • Includes market, customer, strategy and execution plan</div>
+                <div class="trust-item">Built by Brett Bouchard ⚡ 20+ years GTM experience ✓ Helped 30+ startups launch ⭐ Loved by beta users</div>
             </div>
         </div>
     </section>
@@ -539,40 +607,9 @@
         <div class="container">
             <h2 class="section-title">Why founders choose this over agencies or DIY</h2>
             <div class="props-grid">
-                <div class="prop-card"><h3>A fraction of the effort and time</h3><p>No meetings or back‑and‑forth. Get a complete launch blueprint in under 60 minutes so you can get back to building.</p></div>
-                <div class="prop-card"><h3>Practical, not generic</h3><p>Agents apply my proven GTM frameworks and are audited for hallucinations. You get an action‑ready plan, not theory.</p></div>
-                <div class="prop-card"><h3>End‑to‑end clarity</h3><p>Market research, customer insights, positioning, strategy, and a step‑by‑step execution roadmap — everything in one blueprint.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How it Works</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-header"><div class="step-number">1</div><h3>Intake (2 minutes)</h3></div>
-                    <p>Share basic context about your company, product, and goals. That's your only task.</p>
-                </div>
-                <div class="step">
-                    <div class="step-header"><div class="step-number">2</div><h3>Specialist AI agents</h3></div>
-                    <img src="AI_Launch_Plan_-_visual_for_landing_page.png" alt="AI Launch Plan Workflow" class="workflow-diagram">
-                    <ul>
-                        <li><strong>Sniff:</strong> Enriches your inputs with live web research on company and product context.</li>
-                        <li><strong>Scout:</strong> Runs deep market analysis—competitors, market sizing (TAM/SAM/SOM) and dynamics.</li>
-                        <li><strong>Lens:</strong> Builds customer insights—segments, ICP, JTBD, personas, pains and purchase drivers.</li>
-                        <li><strong>Essence:</strong> Crafts your value proposition, positioning, differentiation and messaging.</li>
-                        <li><strong>Ignition:</strong> Defines growth motions, beta strategy, pricing/monetization and metrics.</li>
-                        <li><strong>Springer:</strong> Assembles the go-to-market plan: channels, campaigns, enablement and timeline.</li>
-                        <li><strong>Audito:</strong> Quality-checks for structure, gaps and hallucinations; ensures consistency.</li>
-                        <li><strong>Sum:</strong> Compiles the executive summary and formats the final report.</li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 2rem;"><a href="#sample-report" class="cta-secondary">See a sample report</a></div>
-                </div>
-                <div class="step">
-                    <div class="step-header"><div class="step-number">3</div><h3>Delivery (&lt;60 minutes)</h3></div>
-                    <p>A professional 40+ page launch plan report arrives in your inbox — ready to use.</p>
-                </div>
+                <div class="prop-card"><h3>60 minutes vs. 6 weeks</h3><p>Agencies burn weeks on discovery calls and revisions. You fill out one 2-minute form. The agents do the rest.</p></div>
+                <div class="prop-card"><h3>Zero hallucination tolerance</h3><p>All sources are verified and assumptions explained in the Appendix. And the QA Agent (Audito) exists for one job: catch AI bullshit.</p></div>
+                <div class="prop-card"><h3>The full stack, not just strategy</h3><p>Most consultants stop at positioning. You get market sizing, ICP, pricing, channel strategy, and a 90-day execution timeline. Everything you need to actually launch.</p></div>
             </div>
         </div>
     </section>
@@ -593,23 +630,51 @@
         </div>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How it Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-header"><div class="step-number">1</div><h3>Intake (2 minutes)</h3></div>
+                    <p>Share basic context about your company, product, and goals. That's your only task.</p>
+                </div>
+                <div class="step">
+                    <div class="step-header"><div class="step-number">2</div><h3>Specialist AI agents</h3></div>
+                    <img src="AI_Launch_Plan_-_visual_for_landing_page.png" alt="AI Launch Plan Workflow" class="workflow-diagram">
+                    <ul>
+                        <li><strong>Sniff:</strong> Pulls live data on your market, competitors, and category while you do literally nothing.</li>
+                        <li><strong>Scout:</strong> Sizes your market (TAM/SAM/SOM) and maps competitive dynamics so you stop guessing at opportunity size.</li>
+                        <li><strong>Lens:</strong> Identifies your ICP, personas, and the exact pain points that make buyers open their wallets.</li>
+                        <li><strong>Essence:</strong> Writes your positioning and messaging based on what Lens found—not what sounds good in a focus group.</li>
+                        <li><strong>Ignition:</strong> Defines your pricing, growth channels, beta strategy, and success metrics in one cohesive plan.</li>
+                        <li><strong>Springer:</strong> Builds your 90-day launch roadmap with campaigns, timelines, and enablement—ready to execute Monday.</li>
+                        <li><strong>Audito:</strong> Catches AI hallucinations and logical gaps before they reach your report (this is agent #7's only job).</li>
+                        <li><strong>Sum:</strong> Formats everything into a 40+ page report you can skim or deep-dive depending on what you need.</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 2rem;"><a href="#sample-report" class="cta-secondary">See a sample report</a></div>
+                </div>
+                <div class="step">
+                    <div class="step-header"><div class="step-number">3</div><h3>Delivery (&lt;60 minutes)</h3></div>
+                    <p>A professional 40+ page launch plan report arrives in your inbox — ready to use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="who-for">
         <div class="container">
             <h2 class="section-title">Who it's for</h2>
             <div class="audience-list">
-                <div class="audience-item"><strong>Solo founders and small teams</strong> launching a new product or feature</div>
-                <div class="audience-item"><strong>SMBs without a dedicated marketing team</strong> who need a real plan — fast</div>
-                <div class="audience-item"><strong>Early-stage startups</strong> preparing investor updates or market entry</div>
+                <div class="audience-item">You're a solo founder who can't afford a $20K agency — but you need a real plan, not a template</div>
+                <div class="audience-item">You're bootstrapped and need to nail your positioning BEFORE wasting ad budget</div>
+                <div class="audience-item">You've been putting off your launch because planning feels overwhelming</div>
+                <div class="audience-item">You're technical but marketing feels like guesswork — you need frameworks, not fluff</div>
             </div>
         </div>
     </section>
 
     <section class="founder-bio">
-        <div class="container"><div class="bio-content"><h2 class="section-title">About the product builder</h2><p class="bio-text">👋 Hi, I'm Brett Bouchard. With over 20 years in marketing at early stage startups and big tech, I've helped more than 30 early stage startups launch new products and built practical AI solutions for small businesses, including marketing automation workflows. Small teams can move faster than big companies: you can test in days, implement quickly and turn AI into real leverage. Connect with me at <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">https://www.linkedin.com/in/brettbouchard/</a>.</p></div></div>
-    </section>
-
-    <section class="faq" id="faq">
-        <div class="container"><h2 class="section-title">FAQs</h2><div class="faq-container"><div class="faq-item"><div class="faq-question">How personalized is the plan?<span>+</span></div><div class="faq-answer">Every section is generated from your intake plus live research on your market, customers, and competitors — no generic templates.</div></div><div class="faq-item"><div class="faq-question">What sources does the research use?<span>+</span></div><div class="faq-answer">The workflow runs Perplexity Pro deep research and is trained to cite credible, industry sources and make conservative assumptions. All sources and assumptions are listed in the appendix of your report.</div></div><div class="faq-item"><div class="faq-question">How quickly will I receive it?<span>+</span></div><div class="faq-answer">Under 60 minutes after completing the 2-minute intake.</div></div><div class="faq-item"><div class="faq-question">Is my data private?<span>+</span></div><div class="faq-answer">Your inputs are used only to generate your plan and are not shared or used to train third-party models.</div></div></div></div>
+        <div class="container"><div class="bio-content"><h2 class="section-title">About the product builder</h2><p class="bio-text">👋 Hi, I'm Brett Bouchard.<br><br>After 20 years in startup marketing and GTM, I built up a proven playbook: market analysis, ICP research, positioning, pricing, channel strategy.<br><br>Then I automated it.<br><br>I built these 8 agents to handle the heavy lifting: market sizing, competitive analysis, ICP research, positioning, pricing strategy, execution roadmaps. The stuff that normally takes weeks.<br><br>I use it with my consulting clients. Then I thought: why not make this available to every founder and small business owner who needs a real plan but can't drop $15K on an agency?<br><br>That's this.<br><br>Connect with me at <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">https://www.linkedin.com/in/brettbouchard/</a>.</p></div></div>
     </section>
 
     <section class="pricing-comparison">
@@ -646,9 +711,9 @@
                             <td>Depends on agency specialization</td>
                         </tr>
                         <tr>
-                            <td class="highlight">40+ page comprehensive blueprint</td>
+                            <td class="highlight">40+ page blueprint</td>
                             <td>Quality varies, may lack structure</td>
-                            <td>Comprehensive but expensive</td>
+                            <td>Expensive and lengthy</td>
                         </tr>
                         <tr>
                             <td class="highlight">Get started immediately</td>
@@ -661,8 +726,70 @@
         </div>
     </section>
 
+    <section class="value-stack">
+        <div class="container">
+            <h2 class="section-title">What you'd pay an agency</h2>
+            <div class="value-stack-content">
+                <div class="value-item">
+                    <span class="value-label">Market Research & Competitive Analysis:</span>
+                    <span class="value-price">$3,500</span>
+                </div>
+                <div class="value-item">
+                    <span class="value-label">Customer Research & ICP Development:</span>
+                    <span class="value-price">$2,500</span>
+                </div>
+                <div class="value-item">
+                    <span class="value-label">Positioning & Messaging Strategy:</span>
+                    <span class="value-price">$3,500</span>
+                </div>
+                <div class="value-item">
+                    <span class="value-label">Pricing & Monetization Strategy:</span>
+                    <span class="value-price">$2,000</span>
+                </div>
+                <div class="value-item">
+                    <span class="value-label">Channel Strategy & GTM Plan:</span>
+                    <span class="value-price">$4,000</span>
+                </div>
+                <div class="value-item">
+                    <span class="value-label">90-Day Execution Roadmap:</span>
+                    <span class="value-price">$2,500</span>
+                </div>
+                <div class="value-divider"></div>
+                <div class="value-item value-total">
+                    <span class="value-label">Total Agency Cost:</span>
+                    <span class="value-price">$18,000</span>
+                </div>
+                <div class="value-item value-your-price">
+                    <span class="value-label">Your Price:</span>
+                    <span class="value-price">$280</span>
+                </div>
+                <div class="value-item value-savings">
+                    <span class="value-label">You Save:</span>
+                    <span class="value-price">$17,720</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container"><h2 class="section-title">FAQs</h2><div class="faq-container"><div class="faq-item"><div class="faq-question">How do I know AI won't just hallucinate everything?<span>+</span></div><div class="faq-answer">All sources are verified and assumptions explained in the Appendix. And the QA Agent (Audito) checks for discrepancies and missing sources. If something can't be sourced, it doesn't make it into your report.</div></div><div class="faq-item"><div class="faq-question">What if this doesn't work for my specific industry?<span>+</span></div><div class="faq-answer">The agents research YOUR specific market using live data. I've used these frameworks with SaaS, ecommerce, services, hardware, B2B and B2C companies. The process adapts to your context.</div></div><div class="faq-item"><div class="faq-question">What if I have questions about my plan?<span>+</span></div><div class="faq-answer">Email support included for 7 days after delivery. I'll clarify any sections or explain the reasoning behind recommendations. If you want help executing your plan, we can discuss an additional project that meets your needs.</div></div></div></div>
+    </section>
+
     <section class="value-props" id="pricing">
-        <div class="container"><h2 class="section-title">Ready to launch?</h2><div style="text-align: center; max-width: 600px; margin: 0 auto;"><p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">Get your personalized 40+ page launch plan for just <strong style="color: var(--primary-coral); font-size: 2rem;">$280</strong></p><button class="cta-primary" id="pricing-cta" style="font-size: 1.3rem; padding: 1.2rem 2.5rem;">Generate my launch plan</button><p class="cta-microcopy">Delivered in under 60 minutes</p></div></div>
+        <div class="container">
+            <h2 class="section-title">Ready to launch?</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 1rem;">Get your personalized 40+ page launch plan for <strong style="color: var(--primary-coral); font-size: 2rem;">$280</strong></p>
+                <p style="font-size: 1rem; color: var(--primary-coral); font-weight: 600; margin-bottom: 2rem;">First 25 customers get free email support for plan questions ($200 value)</p>
+                <button class="cta-primary" id="pricing-cta" style="font-size: 1.3rem; padding: 1.2rem 2.5rem;">Generate my plan</button>
+                <p class="cta-microcopy" style="margin-top: 1rem;">✓ 40+ pages ✓ Under 60 minutes ✓ $15K+ agency value</p>
+                <p style="font-size: 1.1rem; color: var(--text-dark); font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">$280. One hour. Then you can stop guessing and start launching.</p>
+                <div style="background: var(--accent-cream); border-left: 4px solid var(--primary-blue); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                    <p style="font-size: 1rem; color: var(--text-dark); font-weight: 600; margin: 0;">Not satisfied with your plan? We'll refund 100% within 7 days — no questions asked.</p>
+                </div>
+                <p class="cta-microcopy" style="margin-top: 1.5rem;">Delivered in under 60 minutes</p>
+            </div>
+        </div>
     </section>
 
     <footer>
