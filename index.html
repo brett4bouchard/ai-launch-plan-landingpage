@@ -325,10 +325,11 @@
         }
 
         .founder-bio { padding: 40px 0; background: var(--accent-cream); }
-        .bio-content { max-width: 1000px; margin: 0 auto; display: flex; gap: 3rem; align-items: center; }
+        .bio-content { max-width: 1000px; margin: 0 auto; }
+        .bio-flex { display: flex; gap: 3rem; align-items: flex-start; }
         .bio-text-content { flex: 2; }
         .bio-photo-wrapper { flex: 1; display: flex; justify-content: center; }
-        .bio-photo { width: 100%; max-width: 300px; height: auto; border-radius: 12px; }
+        .bio-photo { width: 100%; max-width: 250px; height: auto; border-radius: 12px; background: var(--accent-cream); }
         .bio-name { font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem; }
         .bio-text { color: var(--text-light); line-height: 1.8; }
 
@@ -463,7 +464,7 @@
                 font-size: 0.9rem;
             }
             .bio-name { font-size: 1.5rem; }
-            .bio-content { flex-direction: column; gap: 2rem; }
+            .bio-flex { flex-direction: column; gap: 2rem; align-items: center; }
             .bio-text-content { text-align: center; }
         }
 
@@ -593,12 +594,14 @@
     <section class="founder-bio">
         <div class="container">
             <div class="bio-content">
-                <div class="bio-text-content">
-                    <h2 class="section-title">About the product builder</h2>
-                    <p class="bio-text">👋 Hi, I'm Brett Bouchard. With over 20 years in marketing at early stage startups and big tech, I've helped more than 30 early stage startups launch new products and built practical AI solutions for small businesses, including marketing automation workflows. Small teams can move faster than big companies: you can test in days, implement quickly and turn AI into real leverage. Connect with me at <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">https://www.linkedin.com/in/brettbouchard/</a>.</p>
-                </div>
-                <div class="bio-photo-wrapper">
-                    <img src="brett-photo-transparent.png" alt="Brett Bouchard" class="bio-photo">
+                <h2 class="section-title">About the product builder</h2>
+                <div class="bio-flex">
+                    <div class="bio-text-content">
+                        <p class="bio-text">👋 Hi, I'm Brett Bouchard. With over 20 years in marketing at early stage startups and big tech, I've helped more than 30 early stage startups launch new products and built practical AI solutions for small businesses, including marketing automation workflows. Small teams can move faster than big companies: you can test in days, implement quickly and turn AI into real leverage. Connect with me at <a href="https://www.linkedin.com/in/brettbouchard/" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">https://www.linkedin.com/in/brettbouchard/</a>.</p>
+                    </div>
+                    <div class="bio-photo-wrapper">
+                        <img src="brett-photo-transparent.png" alt="Brett Bouchard" class="bio-photo">
+                    </div>
                 </div>
             </div>
         </div>
