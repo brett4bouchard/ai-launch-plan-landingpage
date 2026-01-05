@@ -333,6 +333,56 @@
         .bio-name { font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem; }
         .bio-text { color: var(--text-light); line-height: 1.85; margin: 0; }
 
+        .testimonials { padding: 40px 0; background: var(--bg-light); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .testimonial-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--primary-coral);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .testimonial-card.fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .testimonial-quote {
+            position: relative;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary-coral);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-author {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+        }
+        .testimonial-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
         .faq { padding: 40px 0; background: var(--bg-light); }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item {
@@ -466,6 +516,7 @@
             .bio-name { font-size: 1.5rem; }
             .bio-flex { flex-direction: column; gap: 2rem; align-items: center; }
             .bio-text-content { text-align: center; }
+            .testimonials-grid { grid-template-columns: 1fr; }
         }
 
         .spinner { border: 3px solid var(--border-light); border-top: 3px solid var(--primary-coral); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto; }
@@ -587,6 +638,41 @@
                 <div class="audience-item"><strong>Solo founders and small teams</strong> launching a new product or feature</div>
                 <div class="audience-item"><strong>SMBs without a dedicated marketing team</strong> who need a real plan — fast</div>
                 <div class="audience-item"><strong>Early-stage startups</strong> preparing investor updates or market entry</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What founders are saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        Brett's go-to-market strategy report delivered exceptional value-easily worth $10K+ compared to what traditional market research firms charge. The insights were comprehensive, data-driven, and immediately actionable. This report didn't just sit on a shelf; it became the foundation for our entire service strategy. If you're looking for strategic clarity without the agency price tag, this is your answer.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Katelin O'Shea</div>
+                        <div class="testimonial-title">Founder, AI That Works Ltd.</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        The platform's ability to synthesize these inputs into a structured narrative cut our prep time from weeks to days. For a stealth startup like ours, where speed and precision are paramount, this tool is an invaluable asset. I would recommend it to any founder or product team looking to accelerate their go‑to‑market planning without sacrificing analytical depth or a whole lot of capital.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">C Chin</div>
+                        <div class="testimonial-title">AI Scientist & Compliance, Co‑Founder, JedAI Nexus (Stealth Startup)</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        The strategic business plan roadmap is as good if not better than big consulting democratized to everyday business owners who need this support and alignment.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Joe Gardener</div>
+                        <div class="testimonial-title">President, MJDL Enterprises</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -791,7 +877,7 @@
         }, observerOptions);
 
         // Observe elements with animation classes
-        document.querySelectorAll('.prop-card, .step, .audience-item, .faq-item').forEach(el => {
+        document.querySelectorAll('.prop-card, .step, .audience-item, .testimonial-card, .faq-item').forEach(el => {
             observer.observe(el);
         });
 
